@@ -8,6 +8,9 @@ pandas = "*"
 matplotlib = "*"
 scipy = "*"
 seaborn = "*"
+plotly-express = "*"
+nbformat = "*"
+plotly = "*"
 
 [dev-packages]
 ipykernel = "*"
