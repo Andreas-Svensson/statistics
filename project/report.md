@@ -90,13 +90,13 @@ $\alpha = 0.05$
 
 <br>
 
-1. Look at point distribution of petal and sepal values in order to get a brief overview of whether there seems to be a linear relationship or not.
+1. Look at point distribution of petal and sepal values in order to get a brief overview of whether there seems to be a linear relationship or not. In order to correctly analyse the results in coming stages, it will be important to have looked at point distribution to understand the values based on point distribution.  
 
-2. Look at bivariate correlation between width and length of petals and sepals respectively.
+2. Look at bivariate correlation (pearson's r) between width and length of petals and sepals respectively. 
 
-3. Determine significance of correlation by looking at r and p-values.
+3. Determine significance of correlation by evaluating hypotheses based on given r and p-values. A high r and low p-value would point towards strong correlation, and significance is determined by comparing p-value to significance level determined in hypotheses.  
 
-4. Use linear regression model for point prediction if significant correlation was found.
+4. Use linear regression model for point prediction if significant correlation was found. 
 
 <br>
 
@@ -110,7 +110,7 @@ Step-by-step walkthrough of analysis.
 
 ## Petal
 
-First looking at petal point distribution. There seems to be a linear relation between width and length. Will move on to look at correlation for this relation later.  
+First looking at petal point distribution, it looks like the relation between petal width and length is linear. Though there is a gap with no measurements, the overall trend does seem linear in nature.  
 
 ![](assets/petal_regression_scatter.png)
 
@@ -118,11 +118,11 @@ First looking at petal point distribution. There seems to be a linear relation b
 
 ## Sepal
 
-Looking at sepal point distribution. There does not seem to be any correlation between the values. Regression plot still shows a regression line,however the points are widely spread out and there does not seem to be a linear relation between them.
+Moving on to sepal point distribution, there does not seem to be any correlation between the values. The regression plot shows a regression line, however the points are widely spread out and there does not seem to be a linear relation between them.  
 
 ![](assets/sepal_regression_scatter.png)
 
-Instead, looking at sepal data divided by species might give a better explanation for the relation between points. This plot seems to better explain the relation between width and height, and at least in the case of Iris setosa, there appears to be some correlation.  
+Instead, looking at sepal data divided by species might give a better explanation for the relation between points. This plot seems to better explain the relation between width and height, and at least in the case of Iris setosa there appears to be some correlation.  
 
 ![](assets/sepal_species_regression_scatter.png)
 
@@ -140,11 +140,11 @@ For petals, there is a correlation between width and length as seen earlier. Int
 
 Notes:  
 
-- The plot shows r-squared values in order to show strength of correlation only. Instead of an r-value that ranges from -1 to 1, r-squared ranges from 0 to 1, where values towards 0 shows weaker and towards 1 shows stronger correlation. As the focus of this report is to discern whether there is a correlation or not, regardless of whether it is a positive or negative correlation.  
+- The plot shows r-squared values in order to show strength of correlation only. Instead of an r-value that ranges from -1 to 1, r-squared ranges from 0 to 1, where values towards 0 shows weaker and towards 1 shows stronger correlation. As the focus of this report is to discern whether there is a correlation or not, regardless of whether it is a positive or negative correlation, r-squared was deemed the most relevant and clear way to display correlation in this case.  
 
 <br>
 
-Based on the observation of dividing petals by species showing much weaker (if any) correlation, a scatter plot with regression lines explains this relation more in detail. Versicolor seems to have some correlation, while setosa and virginica are much too spread out and not following the regression line closely. In fact, it almost looks like setosa petals has an independent relation between width and height, as most of the datapoints have the same width measurement.
+Based on the observation of dividing petals by species showing much weaker (if any) correlation, a scatter plot with regression lines explains this relation more in detail. Versicolor seems to have some correlation, while setosa and virginica are much too spread out and not following the regression line closely. In fact, it almost looks like setosa petals has an independent relation between width and height, as most of the datapoints have the same width measurement regardless of length.  
 
 ![](assets/petal_species_regression_scatter.png)
 
@@ -207,9 +207,9 @@ Thus there is insufficient evidence to conclude that there is a significant corr
 
 ## In-Sample Prediction
 
-Since the correlation was proven significant for Iris petals, it can be used for prediction. In this case using OLS for a linear regression model, training based on points in the dataset, and using it to perform in-sample prediction. In-sample meaning y-value predictions based on x-values that are within the span of this dataset. Values outside the dataset could also be predicted, but the accuracy of the model would be lower, especially for points that are far outside the span.  
+Since the correlation was proven significant for Iris petals, it can be used for prediction. In this case using OLS for a linear regression model, training based on points in the dataset, and using it to perform in-sample prediction. In-sample meaning y-value predictions based on x-values that are within the span of this dataset. Values outside the dataset could also be predicted, but the accuracy of the model would be lower, especially for points that are far outside the span, as there is not way to confidently tell that the trends observed in the data hold true outside of it as well.  
 
-Below, 30 randomly generated x-values for petals between the dataset's min and max width values are drawn on top of the regression plot for petals from earlier. The model predicts y-values (length) of each input x-value (width) and they all fall, as expected, on the regression line.  
+Below, 30 randomly generated x-values (width) for petals between the dataset's min and max width values are drawn on top of the regression plot for petals from earlier. The model predicts y-values (length) of each input x-value and they all fall, as expected, on the regression line.  
 
 ![](assets/in_sample_prediction.png)
 
@@ -243,7 +243,7 @@ For sepal measurements:
 
 > A significant correlation could not be proven between sepal width and length
 
-A linear regression model can not be said to be well suited to predict sepal measurements as there a significant correlation between sepal width and length could not be proven.  
+A linear regression model can not be said to be well suited to predict sepal measurements as a significant correlation between sepal width and length could not be proven.  
 
 Separating sepals based on species might give a stronger correlation and be a more optimal method for regression. At least in the case of Iris setosa.  
 
