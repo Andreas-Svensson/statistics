@@ -16,6 +16,10 @@ A report on findings from investigating correlation between measurements of Iris
 
 <br>
 
+Project code found at [GitHub](https://github.com/Andreas-Svensson/Statistics/tree/main/project)  
+
+<br>
+
 ### Table of Contents
 
 [Dataset Explanation](#dataset-explanation)  
@@ -122,7 +126,7 @@ Moving on to sepal point distribution, there does not seem to be any correlation
 
 ![](assets/sepal_regression_scatter.png)
 
-Instead, looking at sepal data divided by species might give a better explanation for the relation between points. This plot seems to better explain the relation between width and height, and at least in the case of Iris setosa there appears to be some correlation.  
+Instead, looking at sepal data divided by species might give a better explanation for the relation between points. This plot seems to better explain the relation between width and length, and at least in the case of Iris setosa there appears to be some correlation.  
 
 ![](assets/sepal_species_regression_scatter.png)
 
@@ -144,7 +148,7 @@ Notes:
 
 <br>
 
-Based on the observation of dividing petals by species showing much weaker (if any) correlation, a scatter plot with regression lines explains this relation more in detail. Versicolor seems to have some correlation, while setosa and virginica are much too spread out and not following the regression line closely. In fact, it almost looks like setosa petals has an independent relation between width and height, as most of the datapoints have the same width measurement regardless of length.  
+Based on the observation of dividing petals by species showing much weaker (if any) correlation, a scatter plot with regression lines explains this relation more in detail. Versicolor seems to have some correlation, while setosa and virginica are much too spread out and not following the regression line closely. In fact, it almost looks like setosa petals has an independent relation between width and length, as most of the datapoints have the same width measurement regardless of length.  
 
 ![](assets/petal_species_regression_scatter.png)
 
