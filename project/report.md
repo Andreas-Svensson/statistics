@@ -5,7 +5,7 @@
 
 <br>
 
-A report on findings from investigating correlation between measurements of Iris flower petal and sepal measurements. More specifically centered on whether a significant linear relationship can be found between Iris petal width and length, as well as Iris sepal width and length.
+A report on findings from investigating correlation between measurements of Iris flower petals and sepals. More specifically on whether significant correlation can be found between Iris petal width and length, as well as Iris sepal width and length.
 
 <br><br>
 
@@ -13,24 +13,31 @@ A report on findings from investigating correlation between measurements of Iris
 
 [Dataset Explanation](#dataset-explanation)  
 [Hypothesis](#hypothesis)  
-[Utforande](#utforande)  
+[Approach](#approach)  
 [Analysis](#analysis)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Petal](#petal)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Sepal](#sepal)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Correlation](#correlation)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Correlation Test](#correlation-test)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Hypothesis Evaluation](#hypothesis-evaluation)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[In-Sample Prediction](#in-sample-prediction)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Petal](#petal)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Sepal](#sepal)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Correlation](#correlation)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Correlation Test](#correlation-test)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Hypothesis Evaluation](#hypothesis-evaluation)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [In-Sample Prediction](#in-sample-prediction)  
 [Conclusion](#conclusion)  
 
 <br><br>
 
 # Dataset Explanation
 
+The dataset used is the Iris Dataset from [Kaggle](https://www.kaggle.com/datasets/arshid/iris-flower-dataset)  
 
-TODO:  
+The dataset contains 150 measurements of Iris flower petals and sepals of the species Setosa, Versicolor, and Virginica. Out of the 150 measurements, there are 50 measurements for each species.
 
-Iris Dataset [link to dataset]  
+Each measurement includes (all in mm):  
+- Petal Width  
+- Petal Length  
+- Sepal Width  
+- Sepal Length  
+
+Measurements as per the image below:
 
 Image(s) describing columns, what petal and sepal is  
 
@@ -46,7 +53,7 @@ Hypotheses going into this analysis:
 
 ### 1. Petal Hypothesis  
 
-There is a significant relationship between petal length and width  
+There is a significant correlation between petal length and width  
 
 $H_0: \rho = 0$  
 $H_A: \rho \neq 0$  
@@ -56,7 +63,7 @@ $\alpha = 0.5$
 
 ### 2. Sepal Hypothesis  
 
-There is a significant relationship between sepal length and width  
+There is a significant correlation between sepal length and width  
 
 $H_0: \rho = 0$  
 $H_A: \rho \neq 0$  
@@ -68,7 +75,7 @@ $\alpha = 0.5$
 
 <br><br>
 
-# Execution
+# Approach
 
 ### Planned course of action going into analysis:  
 
@@ -78,11 +85,9 @@ $\alpha = 0.5$
 
 2. Look at bivariate correlation between width and length of petals and sepals respectively.
 
-3. Determine significance by looking at p-values.
+3. Determine significance of correlation by looking at r and p-values.
 
-4. Evaluate whether sufficiently significant correlation can be proven for a linear regression model to be used.
-
-5. Use linear regression model for point prediction.
+4. Use linear regression model for point prediction if significant correlation was found.
 
 <br>
 
@@ -92,9 +97,11 @@ $\alpha = 0.5$
 
 # Analysis
 
+Step-by-step walkthrough of analysis.
+
 ## Petal
 
-Looking at petal point distribution, there seems to be a linear relation between width and length
+First looking at petal point distribution. There seems to be a linear relation between width and length. Will move on to look at correlation for this relation later.  
 
 ![](assets/petal_regression_scatter.png)
 
@@ -102,11 +109,11 @@ Looking at petal point distribution, there seems to be a linear relation between
 
 ## Sepal
 
-Looking at sepal point distribution, we see a negative regression line. However, the points are widely spread out and there does not seem to be a linear relation between them.
+Looking at sepal point distribution. There does not seem to be any correlation between the values. Regression plot still shows a regression line,however the points are widely spread out and there does not seem to be a linear relation between them.
 
 ![](assets/sepal_regression_scatter.png)
 
-Instead, looking at the points divided by species, we can see what seems to be a more clear relation in the point distribution.
+Instead, looking at sepal data divided by species might give a better explanation for the relation between points. This plot seems to better explain the relation between width and height, and at least in the case of Iris setosa, there appears to be some correlation.  
 
 ![](assets/sepal_species_regression_scatter.png)
 
@@ -114,44 +121,55 @@ Instead, looking at the points divided by species, we can see what seems to be a
 
 ## Correlation
 
-Looking at a correlation heatmap of the entire dataset and the various species, we get to confirm some of the observations from earlier.
+Looking at a correlation heatmap of the entire dataset and the various species, some of the earlier observations can be seen in this representation as well: 
 
-The correlation between sepal width and length across the entire dataset is indeed close to zero. Dividing the dataset on subspecies does have a stronger correlation, but perhaps not as strong as it might have looked in the previous figure.  
-Out of the three species, only versicolor shows a correlation at around 0.5.
+For sepals, the correlation between width and length across the entire dataset is indeed close to zero. Dividing the dataset on subspecies does not change this, except for versicolor which shows some correlation.  
 
-The correlation between petal width and length across the entire dataset is strong as suspected from looking at the point distribution. Interestingly however, dividing on species we see a much weaker correlation between petal measurements.
+For petals, there is a correlation between width and length as seen earlier. Interestingly however, dividing on species shows a much weaker correlation between petal measurements.  
 
 ![](assets/correlation_heatmap.png)
 
 Notes:  
 
-- The plot shows r-squared values
+- The plot shows r-squared values in order to show strength of correlation only. Instead of an r-value that ranges from -1 to 1, r-squared ranges from 0 to 1, where values towards 0 shows weaker and towards 1 shows stronger correlation. As the focus of this report is to discern whether there is a correlation or not, regardless of whether it is a positive or negative correlation.  
+
+<br>
+
+Based on the observation of dividing petals by species showing much weaker (if any) correlation, a scatter plot with regression lines explains this relation more in detail. Versicolor seems to have some correlation, while setosa and virginica are much too spread out and not following the regression line closely. In fact, it almost looks like setosa petals has an independent relation between width and height, as most of the datapoints have the same width measurement.
+
+![](assets/petal_species_regression_scatter.png)
+
+Straying slightly from the topic, but an interesting observation none the less, this close to independent relation between measurements for setosa can be further observed by looking at all possible variable combinations. The 4 subplots in the bottom left corner all seem to show a relation where, as the value of x changes, the value of y remains roughly the same.
+
+![](assets/point_distribution_overview.png)
 
 <br><br>
 
 ## Correlation Test
 
-Calculating bivariate correlation
-
-Correlation between petal width and lengt: 
-
-> r = 0.9628, p = 0.0000  
-
-A very strong positive correlation, and an extremely low p-value
+Calculating bivariate correlation using pearsonr from scipy.stats  
 
 <br>
 
-Correlation between sepal width and length: 
+Correlation between petal width and length:  
 
-> r = -0.1094, p = 0.1828  
+> r = 0.963, p = 5.7766609884957695e-86
 
-A weak negative correlation, and a very high p-value
+Strong positive r-value and p-value < 0.001 shows a positive, strong correlation between petal width and length.  
+
+<br>
+
+Correlation between sepal width and length:  
+
+> r = -0.109, p = 0.18276521527134995
+
+Weak negative r-value and high p-value shows no correlation between sepal width and length.  
 
 <br><br>
 
 ## Hypothesis Evaluation
 
-Given p-values from correlation tests, the hypotheses can be evaluated as follows:
+Given p-values from performed correlation tests, the hypotheses can be evaluated as follows:
 
 
 ### 1. Petal Hypothesis  
@@ -162,7 +180,7 @@ $\alpha = 0.05$
 
 $p = 0.0000 \rightarrow p \lt \alpha \rightarrow \text{reject } H_0$  
 
-Thus there is sufficient evidence to conclude that there is a significant linear relationship between petal width and length because the correlation coefficient is significantly different from zero.
+Thus there is sufficient evidence to conclude that there is a significant correlation between petal width and length.  
 
 <br>
 
@@ -174,27 +192,21 @@ $\alpha = 0.05$
 
 $p = 0.1828 \rightarrow p \gt \alpha \rightarrow \text{can not reject } H_0$  
 
-Thus there is insufficient evidence to conclude that there is a significant linear relationship between petal width and length because the correlation coefficient is not significantly different from zero.
+Thus there is insufficient evidence to conclude that there is a significant correlation between petal width and length.  
 
 <br><br>
 
 ## In-Sample Prediction
 
-Since the correlation was proven significant for petals, it can be used for prediction.  
+Since the correlation was proven significant for Iris petals, it can be used for prediction. In this case using OLS for a linear regression model, training based on points in the dataset, and using it to perform in-sample prediction. In-sample meaning y-value predictions based on x-values that are within the span of this dataset. Values outside the dataset could also be predicted, but the accuracy of the model would be lower, especially for points that are far outside the span.  
 
-describe model here --- using OLS
-
-Generating random width measurements between the dataset's min and max values, the model will output predictions as shown in below figure:
+Below, 30 randomly generated x-values for petals between the dataset's min and max width values are drawn on top of the regression plot for petals from earlier. The model predicts y-values (length) of each input x-value (width) and they all fall, as expected, on the regression line.  
 
 ![](assets/in_sample_prediction.png)
 
 However, something worth noting is the gap in data between the smaller measurements (setosa) and the larger ones (versicolor and virginica).  
 
-In the dataset there are no datapoints for that range, one might reason if several flowers with a petal width in that gap were found, their average petal length would be near the prediction line.
-
-A point could be made however about the correctness of such assumptions, especially considering the correlation between petal width and length for individual species not being very strong.  
-
-A point could be made here about the correctness of the predictions in this range, especially considering the correlation between width and length for the individual species not being very strong.
+In the dataset there are no datapoints for this range. Based on the fact that individual species, except for versicolor, show no correlation, petals found with measurements falling within this range might not be predicted accurately. As measurements in that range seem rare, however, it would likely not affect the overall accuracy of the model, thought it might be worth noting.  
 
 <br>
 
@@ -204,21 +216,27 @@ A point could be made here about the correctness of the predictions in this rang
 
 # Conclusion
 
-TODO: finish writing conclusion, this is just a quickly noted down draft of findings
-
-Findings:
-
-> There is a strong correlation between petal width and length
-
-A model to linearly predict petal measurements can be used as there is a significant linear relationship between petal width and length.
+As per the intent of the project, the relationship between width and length measurements of petals and sepals respectively has been analysed, with the analysis coming to the following conclusions:  
 
 <br>
 
+For petal measurements:
+
+> There is a significant correlation between petal width and length
+
+A linear regression model is well suited to predict petal measurements as there is a significant correlation between petal width and length.  
+
+Note however, that there is a gap in the data which might result in inaccurate predictions for values in that range. Also, dividing the dataset by species, the correlation is much weaker. This is something worth considering if one is to use such a model.  
+
+<br>
+
+For sepal measurements:
+
 > There is not a strong correlation between sepal width and length
 
-A linear model does not fit the relation between sepal width and length. Correlation of a significant degree can not be proven.
+A linear regression model can not be said to be well suited to predict sepal measurements as there a significant correlation between sepal width and length could not be proven.  
 
-Separating sepals based on species might give a stronger correlation and be a more optimal method for regression. At least in the case of Iris setosa.
+Separating sepals based on species might give a stronger correlation and be a more optimal method for regression. At least in the case of Iris setosa.  
 
 <br>
 
