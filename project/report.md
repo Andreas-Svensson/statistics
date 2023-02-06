@@ -27,19 +27,21 @@ A report on findings from investigating correlation between measurements of Iris
 
 # Dataset Explanation
 
-The dataset used is the Iris Dataset from [Kaggle](https://www.kaggle.com/datasets/arshid/iris-flower-dataset)  
+Data used is the [Iris Flower Dataset](https://www.kaggle.com/datasets/arshid/iris-flower-dataset) from Kaggle.
 
-The dataset contains 150 measurements of Iris flower petals and sepals of the species Setosa, Versicolor, and Virginica. Out of the 150 measurements, there are 50 measurements for each species.
+The dataset contains measurements of 150 Iris flowers, with 50 flowers each from the 3 subspecies Iris Setosa, Iris Versicolor, and Iris Virginica.
 
-Each measurement includes (all in mm):  
+Each measurement includes: (im mm)
 - Petal Width  
 - Petal Length  
 - Sepal Width  
 - Sepal Length  
 
-Measurements as per the image below:
+As described by the image below
 
-Image(s) describing columns, what petal and sepal is  
+![](assets/iris.png)
+
+<br>
 
 [Back to top](#table-of-contents)
 
@@ -57,7 +59,7 @@ There is a significant correlation between petal length and width
 
 $H_0: \rho = 0$  
 $H_A: \rho \neq 0$  
-$\alpha = 0.5$  
+$\alpha = 0.05$  
 
 <br>
 
@@ -67,7 +69,7 @@ There is a significant correlation between sepal length and width
 
 $H_0: \rho = 0$  
 $H_A: \rho \neq 0$  
-$\alpha = 0.5$  
+$\alpha = 0.05$  
 
 <br>
 
