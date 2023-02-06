@@ -190,7 +190,7 @@ Generating random width measurements between the dataset's min and max values, t
 
 However, something worth noting is the gap in data between the smaller measurements (setosa) and the larger ones (versicolor and virginica).  
 
-In the dataset there are no datapoints for that range, one might reason that were several flowers were with a petal width somewhere in that gap found, their average petal length would be near the prediction line.
+In the dataset there are no datapoints for that range, one might reason if several flowers with a petal width in that gap were found, their average petal length would be near the prediction line.
 
 A point could be made however about the correctness of such assumptions, especially considering the correlation between petal width and length for individual species not being very strong.  
 
