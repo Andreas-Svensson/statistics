@@ -5,6 +5,8 @@
 
 <br>
 
+![](assets/iris_flower.png)
+
 A report on findings from investigating correlation between measurements of Iris flower petals and sepals. More specifically on whether significant correlation can be found between Iris petal width and length, as well as Iris sepal width and length.
 
 <br><br>
@@ -39,7 +41,7 @@ Each measurement includes: (im mm)
 
 As described by the image below
 
-![](assets/iris.png)
+![](assets/iris_measurements.png)
 
 <br>
 
@@ -218,7 +220,7 @@ In the dataset there are no datapoints for this range. Based on the fact that in
 
 # Conclusion
 
-As per the intent of the project, the relationship between width and length measurements of petals and sepals respectively has been analysed, with the analysis coming to the following conclusions:  
+As per the intent of the project, the relationship between width and length measurements of petals and sepals respectively have been analysed, with the analysis coming to the following conclusions:  
 
 <br>
 
@@ -234,7 +236,7 @@ Note however, that there is a gap in the data which might result in inaccurate p
 
 For sepal measurements:
 
-> There is not a strong correlation between sepal width and length
+> A significant correlation could not be proven between sepal width and length
 
 A linear regression model can not be said to be well suited to predict sepal measurements as there a significant correlation between sepal width and length could not be proven.  
 
