@@ -1,15 +1,20 @@
-# Correlation Analysis of Iris Flower Size
+# Correlation Analysis of Iris Flower Measurements
 
 
-## Statistical Analysis Report Based on the Iris Flower Dataset
+## A Report Based on the Iris Flower Dataset
 
 <br>
 
+Statistical Analysis by [Andreas Svensson](https://github.com/Andreas-Svensson)
+
+
 ![](assets/iris_flower.png)
 
-A report on findings from investigating correlation between measurements of Iris flower petals and sepals. More specifically on whether significant correlation can be found between Iris petal width and length, as well as Iris sepal width and length.
+<br>
 
-<br><br>
+A report on findings from investigating correlation between measurements of Iris flower petals and sepals. More specifically on whether significant correlation can be found between Iris petal width and length, as well as Iris sepal width and length. And if a linear regression model would be suitable for describing these relations.  
+
+<br>
 
 ### Table of Contents
 
