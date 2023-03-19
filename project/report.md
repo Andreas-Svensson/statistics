@@ -42,7 +42,7 @@ Data used is the [Iris Flower Dataset](https://www.kaggle.com/datasets/arshid/ir
 
 The dataset contains measurements of 150 Iris flowers, with 50 flowers each from the 3 subspecies Iris Setosa, Iris Versicolor, and Iris Virginica.
 
-Each measurement includes: (im mm)
+Each measurement includes: (in cm)
 - Petal Width  
 - Petal Length  
 - Sepal Width  
@@ -219,7 +219,7 @@ Below, 30 randomly generated x-values (width) for petals between the dataset's m
 
 However, something worth noting is the gap in data between the smaller measurements (setosa) and the larger ones (versicolor and virginica).  
 
-In the dataset there are no datapoints for this range. Based on the fact that individual species, except for versicolor, show no correlation, petals found with measurements falling within this range might not be predicted accurately. As measurements in that range seem rare, however, it would likely not affect the overall accuracy of the model, thought it might be worth noting.  
+In the dataset there are no datapoints for this range. Based on the fact that individual species, except for versicolor, show no correlation, petals found with measurements falling within this range might not be predicted accurately. As measurements in that range seem rare, however, it would likely not affect the overall accuracy of the model, though it might be worth noting.  
 
 <br>
 
